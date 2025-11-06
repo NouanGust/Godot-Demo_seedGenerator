@@ -1,0 +1,112 @@
+[gd_scene load_steps=14 format=3 uid="uid://bu3t8clw5film"]
+
+[ext_resource type="Script" uid="uid://eg7dljj0xpt4" path="res://Scripts/world.gd" id="1_5a7ea"]
+[ext_resource type="Texture2D" uid="uid://4w2l864rf5yo" path="res://Assets/citrus_orchard_road_puresky_4k.hdr" id="1_a02cp"]
+[ext_resource type="PackedScene" uid="uid://ctn27ds7f0ln1" path="res://Scenes/player.tscn" id="2_go701"]
+[ext_resource type="Script" uid="uid://xi4d27u0mmuf" path="res://Scripts/spawnController.gd" id="4_8j60k"]
+[ext_resource type="PackedScene" uid="uid://ctarskp58mjup" path="res://Scenes/besouro.tscn" id="4_fo5ed"]
+[ext_resource type="PackedScene" uid="uid://ctmjyuk4f8f0y" path="res://Scenes/abelha.tscn" id="5_5ukr8"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_go701"]
+panorama = ExtResource("1_a02cp")
+
+[sub_resource type="Sky" id="Sky_5a7ea"]
+sky_material = SubResource("PanoramaSkyMaterial_go701")
+
+[sub_resource type="Environment" id="Environment_8j60k"]
+background_mode = 2
+sky = SubResource("Sky_5a7ea")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_go701"]
+albedo_color = Color(0.07382532, 0.48726642, 2.8878452e-07, 1)
+metallic_specular = 0.09
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8j60k"]
+albedo_color = Color(0.1389961, 0.7164317, 0.724385, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fo5ed"]
+material = SubResource("StandardMaterial3D_8j60k")
+size = Vector2(8, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5ukr8"]
+size = Vector3(8, 0.06, 8)
+
+[node name="World" type="Node3D" node_paths=PackedStringArray("spawn_zones")]
+script = ExtResource("1_5a7ea")
+spawn_zones = [NodePath("Spawn_zones/SpawnZone_lago"), NodePath("Spawn_zones/SpawnZone_floresta"), NodePath("Spawn_zones/SpawnZone_montanha")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+visible = false
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8j60k")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+use_collision = true
+size = Vector3(50, 1, 50)
+material = SubResource("StandardMaterial3D_go701")
+
+[node name="Player" parent="." instance=ExtResource("2_go701")]
+transform = Transform3D(0.75580776, 0, -0.6547936, 0, 1, 0, 0.6547936, 0, 0.75580776, -7.7952714, 1.210844, 8.279804)
+
+[node name="Spawn_zones" type="Node3D" parent="." node_paths=PackedStringArray("spwan_zones")]
+script = ExtResource("4_8j60k")
+creatures = Array[PackedScene]([ExtResource("5_5ukr8"), ExtResource("4_fo5ed")])
+spwan_zones = [NodePath("SpawnZone_lago"), NodePath("SpawnZone_floresta"), NodePath("SpawnZone_montanha")]
+
+[node name="SpawnZone_lago" type="Area3D" parent="Spawn_zones"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.764465, 1.6537571, -12.400928)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Spawn_zones/SpawnZone_lago"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72402906, 0)
+visible = false
+mesh = SubResource("PlaneMesh_fo5ed")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spawn_zones/SpawnZone_lago"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74067557, 0)
+shape = SubResource("BoxShape3D_5ukr8")
+debug_color = Color(0.51531035, 3.965974e-05, 0.42250243, 0.41960785)
+
+[node name="SpawnZone_floresta" type="Area3D" parent="Spawn_zones"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.343056, 1.6537571, 18.144348)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Spawn_zones/SpawnZone_floresta"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72402906, 0)
+visible = false
+mesh = SubResource("PlaneMesh_fo5ed")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spawn_zones/SpawnZone_floresta"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74067557, 0)
+shape = SubResource("BoxShape3D_5ukr8")
+debug_color = Color(0.51531035, 3.965974e-05, 0.42250243, 0.41960785)
+
+[node name="SpawnZone_montanha" type="Area3D" parent="Spawn_zones"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.8044815, 1.6537571, -10.212423)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Spawn_zones/SpawnZone_montanha"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72402906, 0)
+visible = false
+mesh = SubResource("PlaneMesh_fo5ed")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spawn_zones/SpawnZone_montanha"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74067557, 0)
+shape = SubResource("BoxShape3D_5ukr8")
+debug_color = Color(0.51531035, 3.965974e-05, 0.42250243, 0.41960785)
+
+[node name="SpawnZone_cidade" type="Area3D" parent="Spawn_zones"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.676329, 1.6537571, 19.263317)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Spawn_zones/SpawnZone_cidade"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72402906, 0)
+visible = false
+mesh = SubResource("PlaneMesh_fo5ed")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spawn_zones/SpawnZone_cidade"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74067557, 0)
+shape = SubResource("BoxShape3D_5ukr8")
+debug_color = Color(0.51531035, 3.965974e-05, 0.42250243, 0.41960785)

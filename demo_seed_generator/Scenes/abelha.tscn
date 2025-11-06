@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctmjyuk4f8f0y"]
+
+[ext_resource type="PackedScene" uid="uid://d0gfx2lihdq44" path="res://Assets/Actors/addons/gdquest_bee_bot/bee_bot.glb" id="1_8rp8u"]
+[ext_resource type="Script" uid="uid://b77psr1puphey" path="res://Scripts/creature.gd" id="1_mqylw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d532o"]
+radius = 0.23144531
+height = 0.65075684
+
+[node name="Abelha" type="CharacterBody3D"]
+script = ExtResource("1_mqylw")
+
+[node name="bee_bot" parent="." instance=ExtResource("1_8rp8u")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Skeleton3D" parent="bee_bot/Armature" index="0"]
+bones/2/position = Vector3(-2.0881137e-17, 1.6933863e-09, 3.3181657e-09)
+bones/3/rotation = Quaternion(0.37454703, 4.0707704e-08, -1.743915e-08, 0.9272079)
+bones/4/rotation = Quaternion(-0.47443622, 0.15447259, -0.13915998, 0.8553847)
+bones/5/rotation = Quaternion(0.80971014, -7.251626e-09, 9.51585e-09, 0.58683014)
+bones/6/rotation = Quaternion(0.48584446, 4.8766562e-08, 4.865649e-08, 0.8740453)
+bones/7/rotation = Quaternion(-0.47443622, -0.15447259, 0.13915998, 0.8553847)
+bones/8/rotation = Quaternion(0.80971014, 7.2517263e-09, -9.515728e-09, 0.58683014)
+bones/9/rotation = Quaternion(0.48584446, -4.8766438e-08, -4.865641e-08, 0.8740453)
+bones/10/rotation = Quaternion(-0.9995472, 3.3655287e-09, 4.6504496e-08, 0.030091103)
+bones/11/rotation = Quaternion(-0.14132015, 4.479073e-10, -7.0869604e-09, 0.989964)
+bones/12/rotation = Quaternion(0.46537256, 0.48846146, 0.7381231, -0.0028508976)
+bones/13/rotation = Quaternion(-0.48039442, 1.6660918e-07, 6.768364e-08, 0.87705266)
+bones/14/rotation = Quaternion(0.28563735, -0.018591804, -0.12919533, 0.9494074)
+bones/15/rotation = Quaternion(0.2856373, 0.018591376, 0.12919545, 0.9494074)
+bones/16/rotation = Quaternion(-0.009019731, 0.64111835, 0.7669927, 0.024658376)
+bones/17/rotation = Quaternion(-0.55429345, 0.00960304, 0.007063641, 0.832236)
+bones/18/rotation = Quaternion(0.19175719, -0.020412922, -0.12795177, 0.97285193)
+bones/19/rotation = Quaternion(0.18865223, -0.0027866024, 0.13248642, 0.9730622)
+bones/20/rotation = Quaternion(0.777935, 0.39402932, 0.41776162, -0.25501633)
+bones/21/rotation = Quaternion(-0.40892196, 0.032386906, 0.01603755, 0.91185343)
+bones/22/rotation = Quaternion(0.35215884, -0.04969937, -0.119865485, 0.9269016)
+bones/23/rotation = Quaternion(0.3473785, 0.014642809, 0.13308538, 0.9281176)
+bones/24/rotation = Quaternion(0.36178225, 0.045631822, 0.75332874, -0.5472907)
+bones/25/rotation = Quaternion(3.9346546e-08, -2.4489037e-09, 0.02619774, 0.9996568)
+bones/26/rotation = Quaternion(0.46514198, -0.50744784, -0.72520137, -0.014924169)
+bones/27/rotation = Quaternion(-0.39962775, -1.2524299e-07, -6.048187e-08, 0.91667753)
+bones/28/rotation = Quaternion(0.2856373, 0.018591788, 0.12919533, 0.94940734)
+bones/29/rotation = Quaternion(0.28563726, -0.0185914, -0.12919542, 0.9494074)
+bones/30/rotation = Quaternion(-0.009019741, -0.64111835, -0.7669928, 0.024658415)
+bones/31/rotation = Quaternion(-0.47965008, -0.010182163, -0.0061998167, 0.87737894)
+bones/32/rotation = Quaternion(0.3577779, 0.04232138, 0.12246315, 0.9247738)
+bones/33/rotation = Quaternion(0.35475662, -0.02026174, -0.13095751, 0.92552)
+bones/34/rotation = Quaternion(0.77793497, -0.39402935, -0.41776168, -0.25501633)
+bones/35/rotation = Quaternion(-0.4089219, -0.032386925, -0.016037557, 0.91185355)
+bones/36/rotation = Quaternion(0.185854, 0.028129898, 0.12667465, 0.9739716)
+bones/37/rotation = Quaternion(0.18093507, 0.008689675, -0.1336062, 0.974339)
+bones/38/rotation = Quaternion(0.36178222, -0.045631766, -0.7533288, -0.5472907)
+bones/39/rotation = Quaternion(2.799628e-09, -2.051629e-09, -0.025287587, 0.9996802)
+
+[node name="AnimationPlayer" parent="bee_bot" index="1"]
+autoplay = "Idle"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16177607, 0)
+shape = SubResource("CapsuleShape3D_d532o")
+
+[editable path="bee_bot"]
