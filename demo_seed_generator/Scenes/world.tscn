@@ -4,8 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://4w2l864rf5yo" path="res://Assets/citrus_orchard_road_puresky_4k.hdr" id="1_a02cp"]
 [ext_resource type="PackedScene" uid="uid://ctn27ds7f0ln1" path="res://Scenes/player.tscn" id="2_go701"]
 [ext_resource type="Script" uid="uid://xi4d27u0mmuf" path="res://Scripts/spawnController.gd" id="4_8j60k"]
+<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://ctarskp58mjup" path="res://Scenes/besouro.tscn" id="4_fo5ed"]
 [ext_resource type="PackedScene" uid="uid://ctmjyuk4f8f0y" path="res://Scenes/abelha.tscn" id="5_5ukr8"]
+=======
+[ext_resource type="PackedScene" uid="uid://ctarskp58mjup" path="res://Scenes/besouro.tscn" id="5_5ukr8"]
+[ext_resource type="PackedScene" uid="uid://ctmjyuk4f8f0y" path="res://Scenes/abelha.tscn" id="6_o06y3"]
+>>>>>>> origin/Main
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_go701"]
 panorama = ExtResource("1_a02cp")
@@ -54,10 +59,17 @@ material = SubResource("StandardMaterial3D_go701")
 [node name="Player" parent="." instance=ExtResource("2_go701")]
 transform = Transform3D(0.75580776, 0, -0.6547936, 0, 1, 0, 0.6547936, 0, 0.75580776, -7.7952714, 1.210844, 8.279804)
 
+<<<<<<< HEAD
 [node name="Spawn_zones" type="Node3D" parent="." node_paths=PackedStringArray("spwan_zones")]
 script = ExtResource("4_8j60k")
 creatures = Array[PackedScene]([ExtResource("5_5ukr8"), ExtResource("4_fo5ed")])
 spwan_zones = [NodePath("SpawnZone_lago"), NodePath("SpawnZone_floresta"), NodePath("SpawnZone_montanha")]
+=======
+[node name="Spawn_zones" type="Node3D" parent="." node_paths=PackedStringArray("spawn_zones")]
+script = ExtResource("4_8j60k")
+creatures = Array[PackedScene]([ExtResource("5_5ukr8"), ExtResource("6_o06y3")])
+spawn_zones = [NodePath("SpawnZone_lago"), NodePath("SpawnZone_floresta"), NodePath("SpawnZone_montanha"), NodePath("SpawnZone_cidade")]
+>>>>>>> origin/Main
 
 [node name="SpawnZone_lago" type="Area3D" parent="Spawn_zones"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.764465, 1.6537571, -12.400928)

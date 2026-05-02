@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 [gd_scene load_steps=5 format=3 uid="uid://ctn27ds7f0ln1"]
+=======
+[gd_scene load_steps=6 format=3 uid="uid://ctn27ds7f0ln1"]
+>>>>>>> origin/Main
 
 [ext_resource type="Script" uid="uid://chr0lvsgxdf7t" path="res://Scripts/Player.gd" id="1_cvnsp"]
 [ext_resource type="PackedScene" uid="uid://kod0awm1ha4o" path="res://Assets/Actors/addons/gdquest_gobot/model/gobot.glb" id="2_6t5aa"]
 [ext_resource type="Script" uid="uid://cub4oy1lpc78a" path="res://Scripts/camera.gd" id="3_6t5aa"]
+<<<<<<< HEAD
+=======
+[ext_resource type="Script" uid="uid://8e0ukqkn4vuj" path="res://Scripts/Creaturedetector.gd" id="4_vgqql"]
+>>>>>>> origin/Main
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vgqql"]
 radius = 0.3935547
@@ -51,7 +59,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05456543, 0)
 shape = SubResource("CapsuleShape3D_vgqql")
 
 [node name="Camera3D" type="Camera3D" parent="."]
+<<<<<<< HEAD
 transform = Transform3D(1, 0, 0, 0, 0.98999906, 0.14107402, 0, -0.14107402, 0.98999906, 0.40833294, 1.331444, 3.3410544)
 script = ExtResource("3_6t5aa")
 
+=======
+transform = Transform3D(1.25, 0, 0, 0, 1.2374989, 0.17634252, 0, -0.17634252, 1.2374989, 0.40833294, 1.15993, 3.1981745)
+script = ExtResource("3_6t5aa")
+
+[node name="CreatureDetector" type="Node3D" parent="."]
+script = ExtResource("4_vgqql")
+
+>>>>>>> origin/Main
 [editable path="gobot"]
